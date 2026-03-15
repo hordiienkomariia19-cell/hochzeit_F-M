@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Свадьба</title>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#fff0f6,#ffe4ec);
+text-align:center;
+padding:40px;
+}
+
+h1{
+color:#d6336c;
+}
+
+.card{
+background:white;
+padding:30px;
+width:300px;
+margin:auto;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#d6336c;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+background:#ffe4ec;
+margin:5px;
+padding:8px;
+border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Подтвердите присутствие на нашей свадьбе 💍</h1>
+
+<div class="card">
+
+<form id="form">
+
+<input type="text" id="name" placeholder="Ваше имя" required>
+
+<input type="number" id="guests" placeholder="Количество гостей" required>
+
+<br>
+
+<button>Подтвердить</button>
+
+</form>
+
+</div>
+
+<h2>Список гостей</h2>
+
+<ul id="list"></ul>
+
+<script>
+
+const form=document.getElementById("form")
+const list=document.getElementById("list")
+
+let guests=[]
+
+form.addEventListener("submit",e=>{
+
+e.preventDefault()
+
+let name=document.getElementById("name").value
+let guestsCount=document.getElementById("guests").value
+
+guests.push({name,guests:guestsCount})
+
+list.innerHTML=""
+
+guests.forEach(g=>{
+
+let li=document.createElement("li")
+
+li.textContent=g.name+" — "+g.guests+" человек"
+
+list.appendChild(li)
+
+})
+
+form.reset()
+
+})
+
+</script>
+
+</body>
+</html>
